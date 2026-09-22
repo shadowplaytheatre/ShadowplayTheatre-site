@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +22,6 @@
 
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow-x: hidden;
     }
 
@@ -33,95 +31,74 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 24px;
+      justify-content: flex-end;
+      padding: 70px 6%;
       background:
-        radial-gradient(circle at 50% 38%,
-          rgba(255, 235, 180, 0.15) 0%,
-          rgba(255, 235, 180, 0.06) 11%,
-          rgba(0,0,0,0) 30%),
-        linear-gradient(to bottom,
-          #080808 0%,
-          #030303 70%,
-          #000 100%);
-    }
-
-    .ghost-light {
-      position: absolute;
-      top: 29%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #fff5cf;
-      box-shadow:
-        0 0 18px rgba(255, 243, 199, 0.95),
-        0 0 50px rgba(255, 229, 158, 0.55),
-        0 0 120px rgba(255, 220, 130, 0.25);
-    }
-
-    .ghost-light::after {
-      content: "";
-      position: absolute;
-      width: 3px;
-      height: 180px;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to bottom,
-        rgba(150,150,150,0.75),
-        rgba(55,55,55,0.3)
-      );
+        linear-gradient(
+          to right,
+          transparent 0%,
+          rgba(0,0,0,0.12) 35%,
+          rgba(0,0,0,0.65) 60%,
+          rgba(0,0,0,0.85) 100%
+        ),
+        url("ghostlight.png") left center / cover no-repeat;
     }
 
     .content {
       position: relative;
       z-index: 2;
-      max-width: 760px;
-      margin-top: 230px;
+      width: 48%;
+      max-width: 720px;
+      text-align: left;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 6vw, 4.4rem);
-      letter-spacing: 0.13em;
+      font-size: clamp(2rem, 3.5vw, 4rem);
+      line-height: 1.15;
+      letter-spacing: 0.10em;
       font-weight: 400;
     }
 
     .tagline {
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 1.1rem;
       font-style: italic;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .building {
-      margin: 42px auto 0;
-      max-width: 620px;
-      font-size: 1.3rem;
-      line-height: 1.7;
+      margin-top: 42px;
+      font-size: 1.15rem;
+      line-height: 1.75;
+    }
+
+    .building p {
+      margin: 0 0 24px;
     }
 
     .divider {
       width: 70px;
       height: 1px;
       background: rgba(255,255,255,0.35);
-      margin: 36px auto;
+      margin: 36px 0;
+    }
+
+    .follow {
+      font-size: 1.05rem;
+      font-style: italic;
+      margin-bottom: 20px;
     }
 
     .links {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 28px;
     }
 
-    .links a,
-    .signup {
+    .links a {
       border: 1px solid rgba(255,255,255,0.45);
       color: #f2eee8;
       text-decoration: none;
@@ -132,26 +109,32 @@
       background: transparent;
     }
 
-    .links a:hover,
-    .signup:hover {
+    .links a:hover {
       background: #f2eee8;
       color: #050505;
     }
 
     .mailing {
-      margin-top: 40px;
+      margin-top: 45px;
     }
 
     .mailing h2 {
       font-size: 1.1rem;
       font-weight: 400;
       letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .mailing p {
-      opacity: 0.75;
+      opacity: 0.85;
       line-height: 1.6;
       font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    .mailing .formkit-form {
+      max-width: 100% !important;
+      width: 100% !important;
     }
 
     footer {
@@ -161,9 +144,45 @@
       letter-spacing: 0.06em;
     }
 
-    @media (max-width: 600px) {
+    /* TABLETS */
+
+    @media (max-width: 1000px) {
+      .stage {
+        padding: 60px 5%;
+      }
+
       .content {
-        margin-top: 210px;
+        width: 55%;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .stage {
+        display: block;
+        min-height: 100vh;
+        padding: 0;
+        background: #050505;
+      }
+
+      .stage::before {
+        content: "";
+        display: block;
+        width: 100%;
+        aspect-ratio: 1672 / 941;
+        background:
+          url("ghostlight.png") center center / contain no-repeat;
+      }
+
+      .content {
+        width: 100%;
+        max-width: none;
+        padding: 35px 25px 60px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
       }
 
       .building {
@@ -171,13 +190,11 @@
       }
 
       .links {
-        flex-direction: column;
-        align-items: center;
+        justify-content: flex-start;
       }
 
-      .links a,
-      .signup {
-        width: 220px;
+      .links a {
+        text-align: center;
       }
     }
   </style>
@@ -187,39 +204,90 @@
 
   <main class="stage">
 
-    <div class="ghost-light"></div>
-
     <div class="content">
 
-      <h1>SHADOWPLAY</h1>
+      <h1>SHADOWPLAY THEATRE COMPANY</h1>
 
       <div class="tagline">
         Finding beauty in the darkness.
       </div>
 
       <div class="building">
-        Something is taking shape in the shadows.
-        <br><br>
-        Shadowplay Theatre Company is being built.
+
+        <p>
+          Something is taking shape in the shadows.
+        </p>
+
+        <p>
+          We’re building a theatre company for the
+          darkly inclined — gothic stories, strange
+          histories, forgotten works, horror,
+          theatrical experiments, and the beautiful
+          things that live just beyond the edge
+          of the light.
+        </p>
+
+        <p>
+          The curtain isn’t up yet.
+        </p>
+
+        <p>
+          But the theatre is being built.
+        </p>
+
       </div>
 
-    <div class="links">
-  <a href="https://www.tiktok.com/@shadowplaytheatre" target="_blank">TikTok</a>
-  <a href="https://www.instagram.com/shadowplaytheatreco" target="_blank">Instagram</a>
-  <a href="https://www.facebook.com/ShadowplayTheatreCo/" target="_blank">Facebook</a>
-  <a href="https://www.youtube.com/@shadowplaytheatreco" target="_blank">YouTube</a>
-  <a href="https://www.twitch.tv/shadowplaytheatre" target="_blank">Twitch</a>
-</div>
+      <div class="divider"></div>
 
-<div class="mailing">
-  <h2>JOIN THE MAILING LIST</h2>
+      <p class="follow">
+        Follow the work as it takes shape.
+      </p>
 
-  <p>
-    Follow the work as it takes shape.
-  </p>
+      <div class="links">
 
-  <script async data-uid="99df626eb1" src="https://shadowplay-theatre-company.kit.com/99df626eb1/index.js"></script>
-</div>
+        <a href="https://www.tiktok.com/@shadowplaytheatre"
+           target="_blank" rel="noopener noreferrer">
+          TikTok
+        </a>
+
+        <a href="https://www.instagram.com/shadowplaytheatreco"
+           target="_blank" rel="noopener noreferrer">
+          Instagram
+        </a>
+
+        <a href="https://www.facebook.com/ShadowplayTheatreCo/"
+           target="_blank" rel="noopener noreferrer">
+          Facebook
+        </a>
+
+        <a href="https://www.youtube.com/@shadowplaytheatreco"
+           target="_blank" rel="noopener noreferrer">
+          YouTube
+        </a>
+
+        <a href="https://www.twitch.tv/shadowplaytheatre"
+           target="_blank" rel="noopener noreferrer">
+          Twitch
+        </a>
+
+      </div>
+
+      <div class="mailing">
+
+        <h2>Join the mailing list</h2>
+
+        <p>
+          Be the first to hear about productions,
+          livestreams, events, casting, and
+          other strange developments.
+        </p>
+
+        <script async
+          data-uid="99df626eb1"
+          src="https://shadowplay-theatre-company.kit.com/99df626eb1/index.js">
+        </script>
+
+      </div>
 
       <footer>
         SHADOWPLAY THEATRE COMPANY
