@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shadowplay Theatre Company</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #050505;
+      color: #f2eee8;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      background:
+        radial-gradient(circle at 50% 38%,
+          rgba(255, 235, 180, 0.15) 0%,
+          rgba(255, 235, 180, 0.06) 11%,
+          rgba(0,0,0,0) 30%),
+        linear-gradient(to bottom,
+          #080808 0%,
+          #030303 70%,
+          #000 100%);
+    }
+
+    .ghost-light {
+      position: absolute;
+      top: 29%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff5cf;
+      box-shadow:
+        0 0 18px rgba(255, 243, 199, 0.95),
+        0 0 50px rgba(255, 229, 158, 0.55),
+        0 0 120px rgba(255, 220, 130, 0.25);
+    }
+
+    .ghost-light::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 180px;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        to bottom,
+        rgba(150,150,150,0.75),
+        rgba(55,55,55,0.3)
+      );
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin-top: 230px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 4.4rem);
+      letter-spacing: 0.13em;
+      font-weight: 400;
+    }
+
+    .tagline {
+      margin-top: 14px;
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .building {
+      margin: 42px auto 0;
+      max-width: 620px;
+      font-size: 1.3rem;
+      line-height: 1.7;
+    }
+
+    .divider {
+      width: 70px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+      margin: 36px auto;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .links a,
+    .signup {
+      border: 1px solid rgba(255,255,255,0.45);
+      color: #f2eee8;
+      text-decoration: none;
+      padding: 12px 18px;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+      background: transparent;
+    }
+
+    .links a:hover,
+    .signup:hover {
+      background: #f2eee8;
+      color: #050505;
+    }
+
+    .mailing {
+      margin-top: 40px;
+    }
+
+    .mailing h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+    }
+
+    .mailing p {
+      opacity: 0.75;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 55px;
+      font-size: 0.8rem;
+      opacity: 0.45;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        margin-top: 210px;
+      }
+
+      .building {
+        font-size: 1.08rem;
+      }
+
+      .links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .links a,
+      .signup {
+        width: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="stage">
+
+    <div class="ghost-light"></div>
+
+    <div class="content">
+
+      <h1>SHADOWPLAY</h1>
+
+      <div class="tagline">
+        Finding beauty in the darkness.
+      </div>
+
+      <div class="building">
+        Something is taking shape in the shadows.
+        <br><br>
+        Shadowplay Theatre Company is being built.
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="links">
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
+        <a href="#" target="_blank">Twitch</a>
+      </div>
+
+      <div class="mailing">
+        <h2>JOIN THE MAILING LIST</h2>
+
+        <p>
+          Follow the work as it takes shape.
+        </p>
+
+        <a class="signup" href="#" target="_blank">
+          Enter the Mailing List
+        </a>
+      </div>
+
+      <footer>
+        SHADOWPLAY THEATRE COMPANY
+      </footer>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
