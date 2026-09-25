@@ -7,6 +7,9 @@
 
   <title>Shadowplay Theatre Company</title>
 
+  <meta name="description"
+        content="Shadowplay Theatre Company. Gothic stories, strange histories, forgotten works, horror and theatrical experiments.">
+
   <style>
     * {
       box-sizing: border-box;
@@ -25,6 +28,8 @@
       overflow-x: hidden;
     }
 
+    /* MAIN STAGE */
+
     .stage {
       position: relative;
       width: 100%;
@@ -33,6 +38,7 @@
       align-items: center;
       justify-content: flex-end;
       padding: 70px 6%;
+
       background:
         linear-gradient(
           to right,
@@ -44,31 +50,42 @@
         url("ghostlight.png") left center / cover no-repeat;
     }
 
+    /* CONTENT COLUMN */
+
     .content {
       position: relative;
       z-index: 2;
       width: 48%;
       max-width: 720px;
+      min-width: 0;
       text-align: left;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 3.5vw, 4rem);
-      line-height: 1.15;
-      letter-spacing: 0.10em;
-      font-weight: 400;
+    /* SHADOWPLAY LOGO */
+
+    .logo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1.65;
+      overflow: hidden;
+      margin-bottom: 15px;
     }
 
-    .tagline {
-      margin-top: 16px;
-      font-size: 1.1rem;
-      font-style: italic;
-      opacity: 0.85;
+    .logo img {
+      position: absolute;
+      width: 205%;
+      max-width: none;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
     }
+
+    /* INTRODUCTION */
 
     .building {
-      margin-top: 42px;
+      margin-top: 30px;
       font-size: 1.15rem;
       line-height: 1.75;
     }
@@ -90,6 +107,8 @@
       margin-bottom: 20px;
     }
 
+    /* SOCIAL LINKS */
+
     .links {
       display: flex;
       justify-content: flex-start;
@@ -109,13 +128,18 @@
       background: transparent;
     }
 
-    .links a:hover {
+    .links a:hover,
+    .links a:focus-visible {
       background: #f2eee8;
       color: #050505;
     }
 
+    /* MAILING LIST */
+
     .mailing {
       margin-top: 45px;
+      width: 100%;
+      min-width: 0;
     }
 
     .mailing h2 {
@@ -135,61 +159,67 @@
     .mailing .formkit-form {
       max-width: 100% !important;
       width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* SUPPORT SHADOWPLAY */
+
+    .support {
+      width: 100%;
+      margin-top: 65px;
+      padding: 38px 0;
+      border-top: 1px solid rgba(216,187,136,0.4);
+      text-align: center;
+    }
+
+    .support h2 {
+      color: #e8d2aa;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .support p {
+      color: #d7c7ae;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 25px auto;
+    }
+
+    .support-button {
+      display: inline-block;
+      margin: 12px 0;
+      padding: 16px 30px;
+      background: #d9bb88;
+      color: #17120d;
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+
+    .support-button:hover,
+    .support-button:focus-visible {
+      background: #f0dfc4;
+    }
+
+    .support .support-note {
+      font-size: 0.75rem;
+      opacity: 0.65;
+      margin-top: 20px;
     }
 
     footer {
-      margin-top: 55px;
+      margin-top: 35px;
       font-size: 0.8rem;
       opacity: 0.45;
       letter-spacing: 0.06em;
     }
 
     /* TABLETS */
-
-.support {
-  margin-top: 65px;
-  padding: 38px 0;
-  border-top: 1px solid rgba(216,187,136,0.4);
-  text-align: center;
-}
-
-.support h2 {
-  color: #e8d2aa;
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  line-height: 1.4;
-}
-
-.support p {
-  color: #d7c7ae;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 25px auto;
-}
-
-.support-button {
-  display: inline-block;
-  margin: 12px 0;
-  padding: 16px 30px;
-  background: #d9bb88;
-  color: #17120d;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition: background 0.25s;
-}
-
-.support-button:hover {
-  background: #f0dfc4;
-}
-
-.support .support-note {
-  font-size: 0.75rem;
-  opacity: 0.65;
-  margin-top: 20px;
-}
 
     @media (max-width: 1000px) {
       .stage {
@@ -226,8 +256,8 @@
         padding: 35px 25px 60px;
       }
 
-      h1 {
-        font-size: clamp(2rem, 8vw, 3rem);
+      .logo {
+        margin-bottom: 15px;
       }
 
       .building {
@@ -241,6 +271,15 @@
       .links a {
         text-align: center;
       }
+
+      .support {
+        margin-top: 50px;
+        padding: 35px 0;
+      }
+
+      .support h2 {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
@@ -251,11 +290,15 @@
 
     <div class="content">
 
-      <h1>SHADOWPLAY THEATRE COMPANY</h1>
+      <!-- ORIGINAL SHADOWPLAY LOGO -->
 
-      <div class="tagline">
-        Finding beauty in the darkness.
+      <div class="logo">
+        <img
+          src="Shadowplay Logo.png"
+          alt="The Shadowplay Theatre Company logo, featuring a skeleton holding a theatrical mask">
       </div>
+
+      <!-- INTRODUCTION -->
 
       <div class="building">
 
@@ -288,36 +331,50 @@
         Follow the work as it takes shape.
       </p>
 
-      <div class="links">
+      <!-- SOCIAL LINKS -->
 
-        <a href="https://www.tiktok.com/@shadowplaytheatre"
-           target="_blank" rel="noopener noreferrer">
+      <nav class="links" aria-label="Social media">
+
+        <a
+          href="https://www.tiktok.com/@shadowplaytheatre"
+          target="_blank"
+          rel="noopener noreferrer">
           TikTok
         </a>
 
-        <a href="https://www.instagram.com/shadowplaytheatreco"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.instagram.com/shadowplaytheatreco"
+          target="_blank"
+          rel="noopener noreferrer">
           Instagram
         </a>
 
-        <a href="https://www.facebook.com/ShadowplayTheatreCo/"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.facebook.com/ShadowplayTheatreCo/"
+          target="_blank"
+          rel="noopener noreferrer">
           Facebook
         </a>
 
-        <a href="https://www.youtube.com/@shadowplaytheatreco"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.youtube.com/@shadowplaytheatreco"
+          target="_blank"
+          rel="noopener noreferrer">
           YouTube
         </a>
 
-        <a href="https://www.twitch.tv/shadowplaytheatre"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.twitch.tv/shadowplaytheatre"
+          target="_blank"
+          rel="noopener noreferrer">
           Twitch
         </a>
 
-      </div>
+      </nav>
 
-      <div class="mailing">
+      <!-- KIT MAILING LIST -->
+
+      <section class="mailing">
 
         <h2>Join the mailing list</h2>
 
@@ -327,42 +384,46 @@
           other strange developments.
         </p>
 
-        <script async
+        <script
+          async
           data-uid="99df626eb1"
           src="https://shadowplay-theatre-company.kit.com/99df626eb1/index.js">
         </script>
 
-      </div>
+      </section>
+
+      <!-- SUPPORT SHADOWPLAY -->
+
+      <section class="support">
+
+        <h2>KEEP THE GHOST LIGHT BURNING</h2>
+
+        <p>
+          Help us build a home for the darkly inclined.
+          Your support helps bring Shadowplay's productions,
+          performances and strange little experiments to life.
+        </p>
+
+        <a
+          href="https://www.paypal.com/donate/?hosted_button_id=B2P3PN8H7L2T4"
+          class="support-button"
+          target="_blank"
+          rel="noopener noreferrer">
+          SUPPORT SHADOWPLAY
+        </a>
+
+        <p class="support-note">
+          Contributions are voluntary and are not
+          tax-deductible charitable donations.
+        </p>
+
+      </section>
 
       <footer>
         SHADOWPLAY THEATRE COMPANY
       </footer>
 
     </div>
-    
-<section class="support">
-  <h2>KEEP THE GHOST LIGHT BURNING</h2>
-
-  <p>
-    Help us build a home for the darkly inclined.
-    Your support helps bring Shadowplay's productions,
-    performances and strange little experiments to life.
-  </p>
-
-  <a
-    href="https://www.paypal.com/donate/?hosted_button_id=B2P3PN8H7L2T4"
-    class="support-button"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    SUPPORT SHADOWPLAY
-  </a>
-
-  <p class="support-note">
-    Contributions are voluntary and are not
-    tax-deductible charitable donations.
-  </p>
-</section>
 
   </main>
 
