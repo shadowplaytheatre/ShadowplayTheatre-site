@@ -38,7 +38,7 @@
 
       background-image: url("ghostlight.png");
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
       background-position: left center;
       background-color: #050505;
     }
@@ -55,10 +55,10 @@
       background:
         linear-gradient(
           to right,
-          rgba(0,0,0,0.08) 0%,
-          rgba(0,0,0,0.18) 28%,
-          rgba(0,0,0,0.58) 55%,
-          rgba(0,0,0,0.88) 78%,
+          rgba(0,0,0,0.04) 0%,
+          rgba(0,0,0,0.10) 25%,
+          rgba(0,0,0,0.45) 50%,
+          rgba(0,0,0,0.82) 72%,
           rgba(0,0,0,0.95) 100%
         );
     }
@@ -236,8 +236,10 @@
     /* TABLETS */
 
     @media (max-width: 1000px) {
+
       body::before {
-        background-position: 35% center;
+        background-size: contain;
+        background-position: center top;
       }
 
       .stage {
@@ -254,7 +256,7 @@
     @media (max-width: 700px) {
 
       body::before {
-        background-size: cover;
+        background-size: contain;
         background-position: center top;
       }
 
@@ -262,10 +264,10 @@
         background:
           linear-gradient(
             to bottom,
-            rgba(0,0,0,0.08) 0%,
-            rgba(0,0,0,0.28) 24%,
-            rgba(0,0,0,0.68) 48%,
-            rgba(0,0,0,0.90) 68%,
+            rgba(0,0,0,0.04) 0%,
+            rgba(0,0,0,0.18) 28%,
+            rgba(0,0,0,0.60) 52%,
+            rgba(0,0,0,0.88) 72%,
             rgba(0,0,0,0.97) 100%
           );
       }
@@ -273,7 +275,7 @@
       .stage {
         display: block;
         min-height: 100vh;
-        padding: 48vh 25px 60px;
+        padding: 58vh 25px 60px;
       }
 
       .content {
