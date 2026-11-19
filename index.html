@@ -3,432 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Shadowplay Theatre Company</title>
-
-  <meta name="description"
-        content="Shadowplay Theatre Company. Gothic stories, strange histories, forgotten works, horror and theatrical experiments.">
-
+  <meta name="description" content="Shadowplay Theatre Company. Gothic stories, strange histories, forgotten works, horror and theatrical experiments.">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background: #050505;
-      color: #f2eee8;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* FULL-PAGE GHOST LIGHT BACKGROUND */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-
-      background-image: url("ghostlight.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: left center;
-      background-color: #050505;
-    }
-
-    /* DARKEN RIGHT SIDE FOR TEXT */
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-
-      background:
-        linear-gradient(
-          to right,
-          rgba(0,0,0,0.04) 0%,
-          rgba(0,0,0,0.10) 25%,
-          rgba(0,0,0,0.45) 50%,
-          rgba(0,0,0,0.82) 72%,
-          rgba(0,0,0,0.95) 100%
-        );
-    }
-
-    /* MAIN PAGE */
-
-    .stage {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-      padding: 70px 6%;
-    }
-
-    /* MAIN CONTENT */
-
-    .content {
-      position: relative;
-      z-index: 3;
-      width: 48%;
-      max-width: 720px;
-      min-width: 0;
-      text-align: left;
-    }
-
-    /* INTRODUCTION */
-
-    .building {
-      margin-top: 30px;
-      font-size: 1.15rem;
-      line-height: 1.75;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    .building p {
-      margin: 0 0 24px;
-    }
-
-    .divider {
-      width: 70px;
-      height: 1px;
-      background: rgba(255,255,255,0.35);
-      margin: 36px 0;
-    }
-
-    .follow {
-      font-size: 1.05rem;
-      font-style: italic;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    /* SOCIAL LINKS */
-
-    .links {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .links a {
-      border: 1px solid rgba(255,255,255,0.45);
-      color: #f2eee8;
-      text-decoration: none;
-      padding: 12px 18px;
-      letter-spacing: 0.08em;
-      font-size: 0.9rem;
-      transition: 0.25s ease;
-      background: rgba(0,0,0,0.35);
-    }
-
-    .links a:hover,
-    .links a:focus-visible {
-      background: #f2eee8;
-      color: #050505;
-    }
-
-    /* MAILING LIST */
-
-    .mailing {
-      margin-top: 45px;
-      width: 100%;
-      min-width: 0;
-    }
-
-    .mailing h2 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    .mailing p {
-      opacity: 0.9;
-      line-height: 1.6;
-      font-size: 0.95rem;
-      margin-bottom: 25px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    .mailing .formkit-form {
-      max-width: 100% !important;
-      width: 100% !important;
-      min-width: 0 !important;
-    }
-
-    /* SUPPORT SHADOWPLAY */
-
-    .support {
-      width: 100%;
-      margin-top: 65px;
-      padding: 38px 0;
-      border-top: 1px solid rgba(216,187,136,0.4);
-      text-align: center;
-    }
-
-    .support h2 {
-      color: #e8d2aa;
-      font-size: 1.5rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      line-height: 1.4;
-      margin: 0;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    .support p {
-      color: #d7c7ae;
-      font-size: 1rem;
-      line-height: 1.7;
-      margin: 25px auto;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    .support-button {
-      display: inline-block;
-      margin: 12px 0;
-      padding: 16px 30px;
-      background: #d9bb88;
-      color: #17120d;
-      font-size: 0.9rem;
-      font-weight: bold;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      transition: background 0.25s;
-    }
-
-    .support-button:hover,
-    .support-button:focus-visible {
-      background: #f0dfc4;
-    }
-
-    .support .support-note {
-      font-size: 0.75rem;
-      opacity: 0.7;
-      margin-top: 20px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      margin-top: 35px;
-      font-size: 0.8rem;
-      opacity: 0.45;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-
-    /* TABLETS */
-
-    @media (max-width: 1000px) {
-
-      body::before {
-        background-size: contain;
-        background-position: center top;
-      }
-
-      .stage {
-        padding: 60px 5%;
-      }
-
-      .content {
-        width: 55%;
-      }
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      body::before {
-        background-size: contain;
-        background-position: center top;
-      }
-
-      body::after {
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.04) 0%,
-            rgba(0,0,0,0.18) 28%,
-            rgba(0,0,0,0.60) 52%,
-            rgba(0,0,0,0.88) 72%,
-            rgba(0,0,0,0.97) 100%
-          );
-      }
-
-      .stage {
-        display: block;
-        min-height: 100vh;
-        padding: 58vh 25px 60px;
-      }
-
-      .content {
-        width: 100%;
-        max-width: none;
-        padding: 0;
-      }
-
-      .building {
-        font-size: 1.08rem;
-      }
-
-      .links {
-        justify-content: flex-start;
-      }
-
-      .links a {
-        text-align: center;
-      }
-
-      .support {
-        margin-top: 50px;
-        padding: 35px 0;
-      }
-
-      .support h2 {
-        font-size: 1.3rem;
-      }
-    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #050505; color: #f2eee8; font-family: Georgia, "Times New Roman", serif; }
+    body { min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: 0; background-image: url("ghostlight.png"); background-repeat: no-repeat; background-size: contain; background-position: left center; background-color: #050505; }
+    body::after { content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.10) 25%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.82) 72%, rgba(0,0,0,0.95) 100%); }
+    .stage { position: relative; z-index: 2; width: 100%; min-height: 100vh; display: flex; align-items: flex-start; justify-content: flex-end; padding: 70px 6%; }
+    .content { position: relative; z-index: 3; width: 48%; max-width: 720px; min-width: 0; text-align: left; }
+    .building { margin-top: 30px; font-size: 1.15rem; line-height: 1.75; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .building p { margin: 0 0 24px; }
+    .divider { width: 70px; height: 1px; background: rgba(255,255,255,0.35); margin: 36px 0; }
+    .follow { font-size: 1.05rem; font-style: italic; margin-bottom: 20px; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .links { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .links a { border: 1px solid rgba(255,255,255,0.45); color: #f2eee8; text-decoration: none; padding: 12px 18px; letter-spacing: 0.08em; font-size: 0.9rem; transition: 0.25s ease; background: rgba(0,0,0,0.35); }
+    .links a:hover, .links a:focus-visible { background: #f2eee8; color: #050505; }
+    .learn-more { display: inline-block; border: 1px solid #d9bb88; color: #e8d2aa; text-decoration: none; padding: 13px 24px; letter-spacing: 0.12em; font-size: 0.88rem; background: rgba(0,0,0,0.4); transition: 0.25s ease; }
+    .learn-more:hover, .learn-more:focus-visible { background: #d9bb88; color: #17120d; }
+    .mailing { margin-top: 45px; width: 100%; min-width: 0; }
+    .mailing h2 { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .mailing p { opacity: 0.9; line-height: 1.6; font-size: 0.95rem; margin-bottom: 25px; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .mailing .formkit-form { max-width: 100% !important; width: 100% !important; min-width: 0 !important; }
+    .support { width: 100%; margin-top: 65px; padding: 38px 0; border-top: 1px solid rgba(216,187,136,0.4); text-align: center; }
+    .support h2 { color: #e8d2aa; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.1em; line-height: 1.4; margin: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .support p { color: #d7c7ae; font-size: 1rem; line-height: 1.7; margin: 25px auto; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    .support-button { display: inline-block; margin: 12px 0; padding: 16px 30px; background: #d9bb88; color: #17120d; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.1em; text-decoration: none; transition: background 0.25s; }
+    .support-button:hover, .support-button:focus-visible { background: #f0dfc4; }
+    .support .support-note { font-size: 0.75rem; opacity: 0.7; margin-top: 20px; }
+    footer { margin-top: 35px; font-size: 0.8rem; opacity: 0.45; letter-spacing: 0.06em; text-shadow: 0 2px 5px rgba(0,0,0,0.9); }
+    @media (max-width: 1000px) { body::before { background-size: contain; background-position: center top; } .stage { padding: 60px 5%; } .content { width: 55%; } }
+    @media (max-width: 700px) { body::before { background-size: contain; background-position: center top; } body::after { background: linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 28%, rgba(0,0,0,0.60) 52%, rgba(0,0,0,0.88) 72%, rgba(0,0,0,0.97) 100%); } .stage { display: block; min-height: 100vh; padding: 58vh 25px 60px; } .content { width: 100%; max-width: none; padding: 0; } .building { font-size: 1.08rem; } .links { justify-content: flex-start; } .links a { text-align: center; } .support { margin-top: 50px; padding: 35px 0; } .support h2 { font-size: 1.3rem; } }
   </style>
 </head>
-
 <body>
-
-  <main class="stage">
-
-    <div class="content">
-
-      <div class="building">
-
-        <p>
-          Something is taking shape in the shadows.
-        </p>
-
-        <p>
-          We’re building a theatre company for the
-          darkly inclined — gothic stories, strange
-          histories, forgotten works, horror,
-          theatrical experiments, and the beautiful
-          things that live just beyond the edge
-          of the light.
-        </p>
-
-        <p>
-          The curtain isn’t up yet.
-        </p>
-
-        <p>
-          But the theatre is being built.
-        </p>
-
-      </div>
-
-      <div class="divider"></div>
-
-      <p class="follow">
-        Follow the work as it takes shape.
-      </p>
-
-      <nav class="links" aria-label="Social media">
-
-        <a href="https://www.tiktok.com/@shadowplaytheatre"
-           target="_blank"
-           rel="noopener noreferrer">
-          TikTok
-        </a>
-
-        <a href="https://www.instagram.com/shadowplaytheatreco"
-           target="_blank"
-           rel="noopener noreferrer">
-          Instagram
-        </a>
-
-        <a href="https://www.facebook.com/ShadowplayTheatreCo/"
-           target="_blank"
-           rel="noopener noreferrer">
-          Facebook
-        </a>
-
-        <a href="https://www.youtube.com/@shadowplaytheatreco"
-           target="_blank"
-           rel="noopener noreferrer">
-          YouTube
-        </a>
-
-        <a href="https://www.twitch.tv/shadowplaytheatre"
-           target="_blank"
-           rel="noopener noreferrer">
-          Twitch
-        </a>
-
-      </nav>
-
-      <section class="mailing">
-
-        <h2>Join the mailing list</h2>
-
-        <p>
-          Be the first to hear about productions,
-          livestreams, events, casting, and
-          other strange developments.
-        </p>
-
-        <script
-          async
-          data-uid="2350f8bc8c"
-          src="https://shadowplay-theatre-company.kit.com/2350f8bc8c/index.js">
-        </script>
-
-      </section>
-
-      <section class="support">
-
-        <h2>KEEP THE GHOST LIGHT BURNING</h2>
-
-        <p>
-          Help us build a home for the darkly inclined.
-          Your support helps bring Shadowplay's productions,
-          performances and strange little experiments to life.
-        </p>
-
-        <a
-          href="https://www.paypal.com/donate/?hosted_button_id=B2P3PN8H7L2T4"
-          class="support-button"
-          target="_blank"
-          rel="noopener noreferrer">
-          SUPPORT SHADOWPLAY
-        </a>
-
-        <p class="support-note">
-          Contributions are voluntary and are not
-          tax-deductible charitable donations.
-        </p>
-
-      </section>
-
-      <footer>
-        SHADOWPLAY THEATRE COMPANY
-      </footer>
-
+  <main class="stage"><div class="content">
+    <div class="building">
+      <p>Something is taking shape in the shadows.</p>
+      <p>We’re building a theatre company for the darkly inclined — gothic stories, strange histories, forgotten works, horror, theatrical experiments, and the beautiful things that live just beyond the edge of the light.</p>
+      <p>The curtain isn’t up yet.</p>
+      <p>But the theatre is being built.</p>
+      <a class="learn-more" href="about.html">LEARN MORE</a>
     </div>
-
-  </main>
-
+    <div class="divider"></div>
+    <p class="follow">Follow the work as it takes shape.</p>
+    <nav class="links" aria-label="Social media">
+      <a href="https://www.tiktok.com/@shadowplaytheatre" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://www.instagram.com/shadowplaytheatreco" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/ShadowplayTheatreCo/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.youtube.com/@shadowplaytheatreco" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.twitch.tv/shadowplaytheatre" target="_blank" rel="noopener noreferrer">Twitch</a>
+    </nav>
+    <section class="mailing"><h2>Join the mailing list</h2><p>Be the first to hear about productions, livestreams, events, casting, and other strange developments.</p><script async data-uid="2350f8bc8c" src="https://shadowplay-theatre-company.kit.com/2350f8bc8c/index.js"></script></section>
+    <section class="support"><h2>KEEP THE GHOST LIGHT BURNING</h2><p>Help us build a home for the darkly inclined. Your support helps bring Shadowplay's productions, performances and strange little experiments to life.</p><a href="https://www.paypal.com/donate/?hosted_button_id=B2P3PN8H7L2T4" class="support-button" target="_blank" rel="noopener noreferrer">SUPPORT SHADOWPLAY</a><p class="support-note">Contributions are voluntary and are not tax-deductible charitable donations.</p></section>
+    <footer>SHADOWPLAY THEATRE COMPANY</footer>
+  </div></main>
 </body>
 </html>
